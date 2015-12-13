@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import Parse
+var currentUser = PFUser.currentUser()
 
 class LogInViewController: UIViewController {
 
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var password: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +26,33 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func logIn(sender: AnyObject) {
+        if (username.text != "" && password.text != "") {
+            PFUser.logInWithUsernameInBackground(username.text!, password: password.text!) {
+                (user: PFUser?, error: NSError?) -> Void in
+                if user != nil {
+                    currentUser = PFUser.currentUser()
+                    self.performSegueWithIdentifier("LogInToHomePage", sender: self)
+                } else {
+                    print("Make sure you are using the correct username and password")
+                }
+            }
+        } else {
+            print("Make sure all fields have values!")
+        }
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func logOutUnwind(segue: UIStoryboardSegue) {
+        PFUser.logOutInBackground()
+        currentUser = PFUser.currentUser()
+        username.text = ""
+        password.text = ""
+    }
+
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        self.view.endEditing(true)
+    }
 
     /*
     // MARK: - Navigation

@@ -10,7 +10,6 @@
 		0FFE6C2E1C1C6FFD00BBEF9B /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C2D1C1C6FFD00BBEF9B /* LogInViewController.swift */; };
 		0FFE6C301C1C702000BBEF9B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C2F1C1C702000BBEF9B /* SignUpViewController.swift */; };
 		0FFE6C321C1C708E00BBEF9B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C311C1C708E00BBEF9B /* SettingsViewController.swift */; };
-		0FFE6C341C1C70D800BBEF9B /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C331C1C70D800BBEF9B /* MainPageViewController.swift */; };
 		0FFE6C361C1C70F900BBEF9B /* StudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C351C1C70F900BBEF9B /* StudentInfoViewController.swift */; };
 		0FFE6C381C1C712100BBEF9B /* SignOutHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C371C1C712100BBEF9B /* SignOutHistoryViewController.swift */; };
 		0FFE6C3A1C1C712F00BBEF9B /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C391C1C712F00BBEF9B /* SignOutViewController.swift */; };
@@ -20,6 +19,7 @@
 		0FFE6C421C1C72BF00BBEF9B /* RosterTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C411C1C72BF00BBEF9B /* RosterTypeViewController.swift */; };
 		0FFE6C441C1C72D800BBEF9B /* EventsCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C431C1C72D800BBEF9B /* EventsCalendarViewController.swift */; };
 		0FFE6C461C1C730200BBEF9B /* UpcomingAbsencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C451C1C730200BBEF9B /* UpcomingAbsencesViewController.swift */; };
+		0FFE6C481C1DC60A00BBEF9B /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C471C1DC60A00BBEF9B /* HomePageViewController.swift */; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
@@ -35,7 +35,6 @@
 		0FFE6C2D1C1C6FFD00BBEF9B /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		0FFE6C2F1C1C702000BBEF9B /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0FFE6C311C1C708E00BBEF9B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		0FFE6C331C1C70D800BBEF9B /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		0FFE6C351C1C70F900BBEF9B /* StudentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInfoViewController.swift; sourceTree = "<group>"; };
 		0FFE6C371C1C712100BBEF9B /* SignOutHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignOutHistoryViewController.swift; sourceTree = "<group>"; };
 		0FFE6C391C1C712F00BBEF9B /* SignOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +44,7 @@
 		0FFE6C411C1C72BF00BBEF9B /* RosterTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterTypeViewController.swift; sourceTree = "<group>"; };
 		0FFE6C431C1C72D800BBEF9B /* EventsCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCalendarViewController.swift; sourceTree = "<group>"; };
 		0FFE6C451C1C730200BBEF9B /* UpcomingAbsencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingAbsencesViewController.swift; sourceTree = "<group>"; };
+		0FFE6C471C1DC60A00BBEF9B /* HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		814C3AC91B69877600E307BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -113,13 +113,13 @@
 				0FFE6C451C1C730200BBEF9B /* UpcomingAbsencesViewController.swift */,
 				0FFE6C431C1C72D800BBEF9B /* EventsCalendarViewController.swift */,
 				0FFE6C411C1C72BF00BBEF9B /* RosterTypeViewController.swift */,
+				0FFE6C471C1DC60A00BBEF9B /* HomePageViewController.swift */,
 				0FFE6C3F1C1C729400BBEF9B /* StudentRosterViewController.swift */,
 				0FFE6C3D1C1C727800BBEF9B /* RosterListViewController.swift */,
 				0FFE6C3B1C1C724D00BBEF9B /* InstructorMenuViewController.swift */,
 				0FFE6C371C1C712100BBEF9B /* SignOutHistoryViewController.swift */,
 				0FFE6C391C1C712F00BBEF9B /* SignOutViewController.swift */,
 				0FFE6C351C1C70F900BBEF9B /* StudentInfoViewController.swift */,
-				0FFE6C331C1C70D800BBEF9B /* MainPageViewController.swift */,
 				0FFE6C2F1C1C702000BBEF9B /* SignUpViewController.swift */,
 				0FFE6C2D1C1C6FFD00BBEF9B /* LogInViewController.swift */,
 				0FFE6C311C1C708E00BBEF9B /* SettingsViewController.swift */,
@@ -239,7 +239,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FFE6C341C1C70D800BBEF9B /* MainPageViewController.swift in Sources */,
 				0FFE6C441C1C72D800BBEF9B /* EventsCalendarViewController.swift in Sources */,
 				0FFE6C421C1C72BF00BBEF9B /* RosterTypeViewController.swift in Sources */,
 				0FFE6C381C1C712100BBEF9B /* SignOutHistoryViewController.swift in Sources */,
@@ -248,6 +247,7 @@
 				0FFE6C401C1C729400BBEF9B /* StudentRosterViewController.swift in Sources */,
 				0FFE6C301C1C702000BBEF9B /* SignUpViewController.swift in Sources */,
 				0FFE6C461C1C730200BBEF9B /* UpcomingAbsencesViewController.swift in Sources */,
+				0FFE6C481C1DC60A00BBEF9B /* HomePageViewController.swift in Sources */,
 				0FFE6C321C1C708E00BBEF9B /* SettingsViewController.swift in Sources */,
 				0FFE6C361C1C70F900BBEF9B /* StudentInfoViewController.swift in Sources */,
 				0FFE6C3E1C1C727800BBEF9B /* RosterListViewController.swift in Sources */,
