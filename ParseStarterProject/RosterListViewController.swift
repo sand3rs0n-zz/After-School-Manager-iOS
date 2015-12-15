@@ -11,7 +11,7 @@ import Parse
 
 class RosterListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    private var rosterState: RosterState = RosterState()
+    private var rosterState = 0
     private var rosterList = [PFObject]()
     private var rosterType = 0
     @IBOutlet weak var titleBar: UINavigationItem!
@@ -39,7 +39,7 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    func setState(state: RosterState) {
+    func setState(state: Int) {
         rosterState = state
     }
     
@@ -74,6 +74,7 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         srvc?.setState(rosterState)
         srvc?.setRosterID(forwardedRosterID)
         srvc?.setTitleValue(forwardedRosterName)
+        srvc?.setRosterType(rosterType)
     }
 
     @IBAction func rosterSelectUnwind(segue: UIStoryboardSegue) {

@@ -19,10 +19,7 @@
 		0FFE6C441C1C72D800BBEF9B /* EventsCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C431C1C72D800BBEF9B /* EventsCalendarViewController.swift */; };
 		0FFE6C461C1C730200BBEF9B /* UpcomingAbsencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C451C1C730200BBEF9B /* UpcomingAbsencesViewController.swift */; };
 		0FFE6C481C1DC60A00BBEF9B /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C471C1DC60A00BBEF9B /* HomePageViewController.swift */; };
-		0FFE6C4A1C1F4CA700BBEF9B /* RosterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C491C1F4CA700BBEF9B /* RosterState.swift */; };
-		0FFE6C4C1C1F4CBC00BBEF9B /* ScheduleAbsenceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C4B1C1F4CBC00BBEF9B /* ScheduleAbsenceState.swift */; };
-		0FFE6C4E1C1F4CCB00BBEF9B /* StudentRosterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C4D1C1F4CCB00BBEF9B /* StudentRosterState.swift */; };
-		0FFE6C501C1F4CD400BBEF9B /* SignOutState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C4F1C1F4CD400BBEF9B /* SignOutState.swift */; };
+		0FFE6C521C208E9600BBEF9B /* ScheduleAbsenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C511C208E9600BBEF9B /* ScheduleAbsenceViewController.swift */; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
@@ -47,10 +44,7 @@
 		0FFE6C431C1C72D800BBEF9B /* EventsCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCalendarViewController.swift; sourceTree = "<group>"; };
 		0FFE6C451C1C730200BBEF9B /* UpcomingAbsencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingAbsencesViewController.swift; sourceTree = "<group>"; };
 		0FFE6C471C1DC60A00BBEF9B /* HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
-		0FFE6C491C1F4CA700BBEF9B /* RosterState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RosterState.swift; path = ../RosterState.swift; sourceTree = "<group>"; };
-		0FFE6C4B1C1F4CBC00BBEF9B /* ScheduleAbsenceState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleAbsenceState.swift; path = ../ScheduleAbsenceState.swift; sourceTree = "<group>"; };
-		0FFE6C4D1C1F4CCB00BBEF9B /* StudentRosterState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentRosterState.swift; path = ../StudentRosterState.swift; sourceTree = "<group>"; };
-		0FFE6C4F1C1F4CD400BBEF9B /* SignOutState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignOutState.swift; path = ../SignOutState.swift; sourceTree = "<group>"; };
+		0FFE6C511C208E9600BBEF9B /* ScheduleAbsenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleAbsenceViewController.swift; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		814C3AC91B69877600E307BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,12 +108,9 @@
 		81BA81471A49DA1800E65899 /* ParseStarterProject */ = {
 			isa = PBXGroup;
 			children = (
-				0FFE6C4B1C1F4CBC00BBEF9B /* ScheduleAbsenceState.swift */,
-				0FFE6C4D1C1F4CCB00BBEF9B /* StudentRosterState.swift */,
-				0FFE6C4F1C1F4CD400BBEF9B /* SignOutState.swift */,
-				0FFE6C491C1F4CA700BBEF9B /* RosterState.swift */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				0FFE6C511C208E9600BBEF9B /* ScheduleAbsenceViewController.swift */,
 				0FFE6C451C1C730200BBEF9B /* UpcomingAbsencesViewController.swift */,
 				0FFE6C431C1C72D800BBEF9B /* EventsCalendarViewController.swift */,
 				0FFE6C411C1C72BF00BBEF9B /* RosterTypeViewController.swift */,
@@ -251,20 +242,17 @@
 				0FFE6C441C1C72D800BBEF9B /* EventsCalendarViewController.swift in Sources */,
 				0FFE6C421C1C72BF00BBEF9B /* RosterTypeViewController.swift in Sources */,
 				0FFE6C381C1C712100BBEF9B /* SignOutHistoryViewController.swift in Sources */,
+				0FFE6C521C208E9600BBEF9B /* ScheduleAbsenceViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				0FFE6C3C1C1C724D00BBEF9B /* InstructorMenuViewController.swift in Sources */,
-				0FFE6C4C1C1F4CBC00BBEF9B /* ScheduleAbsenceState.swift in Sources */,
 				0FFE6C401C1C729400BBEF9B /* StudentRosterViewController.swift in Sources */,
 				0FFE6C301C1C702000BBEF9B /* SignUpViewController.swift in Sources */,
 				0FFE6C461C1C730200BBEF9B /* UpcomingAbsencesViewController.swift in Sources */,
 				0FFE6C481C1DC60A00BBEF9B /* HomePageViewController.swift in Sources */,
-				0FFE6C4E1C1F4CCB00BBEF9B /* StudentRosterState.swift in Sources */,
 				0FFE6C361C1C70F900BBEF9B /* StudentInfoViewController.swift in Sources */,
 				0FFE6C3E1C1C727800BBEF9B /* RosterListViewController.swift in Sources */,
 				0FFE6C3A1C1C712F00BBEF9B /* SignOutViewController.swift in Sources */,
-				0FFE6C4A1C1F4CA700BBEF9B /* RosterState.swift in Sources */,
 				0FFE6C2E1C1C6FFD00BBEF9B /* LogInViewController.swift in Sources */,
-				0FFE6C501C1F4CD400BBEF9B /* SignOutState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

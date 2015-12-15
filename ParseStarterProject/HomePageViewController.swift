@@ -29,9 +29,9 @@ class HomePageViewController: UIViewController {
         
         let srvc = segue.destinationViewController as? RosterTypeViewController
         if (segue.identifier == "HomePageToSignOutRosterSelect") {
-            srvc?.setState(SignOutState())
+            srvc?.setState(1)
         } else if (segue.identifier == "HomePageToStudentRosterSelect") {
-            srvc?.setState(StudentRosterState())
+            srvc?.setState(0)
         }
     }
 }

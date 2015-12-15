@@ -10,7 +10,7 @@ import UIKit
 
 class RosterTypeViewController: UIViewController {
     
-    private var rosterState: RosterState = RosterState()
+    private var rosterState = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class RosterTypeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setState(state: RosterState) {
+    func setState(state: Int) {
         rosterState = state
     }
     
@@ -43,8 +43,7 @@ class RosterTypeViewController: UIViewController {
     }
     
     @IBAction func back(sender: AnyObject) {
-        rosterState.call()
-        if (rosterState is ScheduleAbsenceState) {
+        if (rosterState == 2) {
             performSegueWithIdentifier("returnToScheduleAbsences", sender: self)
         } else {
             performSegueWithIdentifier("returnToHomePage", sender: self)

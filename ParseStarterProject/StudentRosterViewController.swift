@@ -11,14 +11,17 @@ import Parse
 
 class StudentRosterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    private var rosterState: RosterState = RosterState()
+    private var rosterState = 0
     private var students = [PFObject]()
     private var rosterID = 0
+    private var rosterType = 0
     @IBOutlet weak var titleBar: UINavigationItem!
     private var navTitle = ""
     
+    private var forwardedStudentID = 0
+    private var forwardedStudentName = ""
+    
     override func viewDidLoad() {
-        print(rosterID)
         super.viewDidLoad()
         self.titleBar.title = navTitle
         let query = PFQuery(className: "StudentRosters")
@@ -28,8 +31,7 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
             students = try query.findObjects()
         } catch {
         }
-        print(students)
-        
+
         // Do any additional setup after loading the view.
     }
     
@@ -38,7 +40,7 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
         // Dispose of any resources that can be recreated.
     }
     
-    func setState(state: RosterState) {
+    func setState(state: Int) {
         rosterState = state
     }
     
@@ -48,6 +50,10 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
     
     func setRosterID(id: Int) {
         rosterID = id
+    }
+
+    func setRosterType(type: Int) {
+        rosterType = type
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -62,9 +68,39 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        let text = cell?.textLabel?.text
-        print(text)
+        let student: PFObject = students[(indexPath.row)]
+        forwardedStudentID = student["studentID"] as! Int
+        forwardedStudentName = student["studentName"] as! String
+        segue()
+    }
+    
+    private func segue() {
+        if (rosterState == 2) {
+            performSegueWithIdentifier("StudentRosterToScheduleAbsence", sender: self)
+        } else if (rosterState == 0) {
+            performSegueWithIdentifier("StudentRosterToStudentProfile", sender: self)
+        } else if (rosterState == 1) {
+            performSegueWithIdentifier("StudentRosterToSignOut", sender: self)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (rosterState == 2) {
+            let savc = segue.destinationViewController as? ScheduleAbsenceViewController
+            savc?.setStudentID(forwardedStudentID)
+            savc?.setStudentName(forwardedStudentName)
+        } else if (rosterState == 0) {
+            let sivc = segue.destinationViewController as? StudentInfoViewController
+            sivc?.setStudentID(forwardedStudentID)
+        } else if (rosterState == 1) {
+            let sovc = segue.destinationViewController as? SignOutViewController
+            sovc?.setStudentID(forwardedStudentID)
+            sovc?.setTitleValue(forwardedStudentName)
+            sovc?.setRosterType(rosterType)
+        }
+    }
+    
+    @IBAction func studentSelectUnwind(segue: UIStoryboardSegue) {
     }
     
 

@@ -25,7 +25,6 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
             absenceList = try query.findObjects()
         } catch {
         }
-        print(absenceList)
         removeOldDates()
 
         // Do any additional setup after loading the view.
@@ -42,8 +41,15 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
         let day = calendar.components(.Day, fromDate:date).day
         for (var i = 0; i < absenceList.count; i++) {
             let currentAbsence = absenceList[i]
-            if ((currentAbsence["year"] as! Int) == year && (currentAbsence["month"] as! Int) <= month && (currentAbsence["day"] as! Int) < day) {
+            if ((currentAbsence["year"] as! Int) < year) {
                 absenceList.removeAtIndex(i)
+                i--
+            } else if ((currentAbsence["year"] as! Int) == year && (currentAbsence["month"] as! Int) < month) {
+                absenceList.removeAtIndex(i)
+                i--
+            } else if ((currentAbsence["year"] as! Int) == year && (currentAbsence["month"] as! Int) == month && (currentAbsence["day"] as! Int) < day) {
+                absenceList.removeAtIndex(i)
+                i--
             }
         }
     }
@@ -68,7 +74,7 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "UpcomingAbsencesToScheduleAbsenceRosterSelect") {
             let srvc = segue.destinationViewController as? RosterTypeViewController
-            srvc?.setState(ScheduleAbsenceState())
+            srvc?.setState(2)
         }
     }
     
