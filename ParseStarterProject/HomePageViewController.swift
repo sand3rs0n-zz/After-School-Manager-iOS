@@ -10,7 +10,7 @@
 import UIKit
 import Parse
 
-class MainPageViewController: UIViewController {
+class HomePageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,5 +20,18 @@ class MainPageViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func returnHomeUnwind(segue: UIStoryboardSegue) {
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let srvc = segue.destinationViewController as? RosterTypeViewController
+        if (segue.identifier == "HomePageToSignOutRosterSelect") {
+            srvc?.setState(SignOutState())
+        } else if (segue.identifier == "HomePageToStudentRosterSelect") {
+            srvc?.setState(StudentRosterState())
+        }
     }
 }

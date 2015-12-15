@@ -9,6 +9,8 @@
 import UIKit
 
 class RosterTypeViewController: UIViewController {
+    
+    private var rosterState: RosterState = RosterState()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,36 @@ class RosterTypeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setState(state: RosterState) {
+        rosterState = state
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let rlvc = segue.destinationViewController as? RosterListViewController
+            rlvc?.setState(rosterState)
+        if (segue.identifier == "RosterTypesToDayCamps") {
+            rlvc?.setTitleValue("Day Camps")
+            rlvc?.setRosterType(0)
+        } else if (segue.identifier == "RosterTypesToWeekCamps") {
+            rlvc?.setTitleValue("Week Camps")
+            rlvc?.setRosterType(1)
+        } else if (segue.identifier == "RosterTypesToAfterSchoolPrograms") {
+            rlvc?.setTitleValue("After School Program")
+            rlvc?.setRosterType(2)
+        }
+    }
+    
+    @IBAction func back(sender: AnyObject) {
+        rosterState.call()
+        if (rosterState is ScheduleAbsenceState) {
+            performSegueWithIdentifier("returnToScheduleAbsences", sender: self)
+        } else {
+            performSegueWithIdentifier("returnToHomePage", sender: self)
+        }
+    }
+    
+    @IBAction func rosterTypeSelectUnwind(segue: UIStoryboardSegue) {
+    }
 
     /*
     // MARK: - Navigation
