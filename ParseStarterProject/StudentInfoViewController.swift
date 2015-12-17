@@ -11,7 +11,7 @@ import Parse
 
 class StudentInfoViewController: UIViewController {
     
-    private var studentID = 1
+    private var studentID = ""
     private var students = [PFObject]()
     private var guardians = [PFObject]()
     private var contactNumbers = [PFObject]()
@@ -30,7 +30,7 @@ class StudentInfoViewController: UIViewController {
         let guardianQuery = PFQuery(className: "Guardians")
         let contactQuery = PFQuery(className: "ContactNumbers")
         
-        studentQuery.whereKey("studentID", equalTo: studentID)
+        studentQuery.whereKey("objectId", equalTo: studentID)
         guardianQuery.whereKey("studentID", equalTo: studentID)
         contactQuery.whereKey("studentID", equalTo: studentID)
         do {
@@ -59,7 +59,7 @@ class StudentInfoViewController: UIViewController {
         studentContacts.text = contactList()
     }
     
-    func setStudentID(id: Int) {
+    func setStudentID(id: String) {
        studentID = id
     }
     

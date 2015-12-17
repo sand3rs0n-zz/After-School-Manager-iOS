@@ -11,7 +11,7 @@ import Parse
 
 class SignOutViewController: UIViewController {
 
-    private var studentID = 0
+    private var studentID = ""
     private var rosterType = 0
     private var signOutGuardian = ""
 
@@ -30,7 +30,7 @@ class SignOutViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setStudentID(id: Int) {
+    func setStudentID(id: String) {
         studentID = id
     }
 

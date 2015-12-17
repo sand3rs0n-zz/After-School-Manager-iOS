@@ -17,7 +17,7 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var titleBar: UINavigationItem!
     private var navTitle = ""
     
-    private var forwardedRosterID = 0
+    private var forwardedRosterID = ""
     private var forwardedRosterName = ""
     
     override func viewDidLoad() {
@@ -65,7 +65,7 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let roster: PFObject = rosterList[(indexPath.row)]
         forwardedRosterName = roster["name"] as! String
-        forwardedRosterID = roster["rosterID"] as! Int
+        forwardedRosterID = roster.objectId!
         performSegueWithIdentifier("RosterSelectToStudentRoster", sender: self)
     }
     

@@ -13,12 +13,12 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
 
     private var rosterState = 0
     private var students = [PFObject]()
-    private var rosterID = 0
+    private var rosterID = ""
     private var rosterType = 0
     @IBOutlet weak var titleBar: UINavigationItem!
     private var navTitle = ""
     
-    private var forwardedStudentID = 0
+    private var forwardedStudentID = ""
     private var forwardedStudentName = ""
     
     override func viewDidLoad() {
@@ -27,6 +27,7 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
         let query = PFQuery(className: "StudentRosters")
         query.whereKey("username", equalTo: (currentUser?.username)!)
         query.whereKey("rosterID", equalTo: rosterID)
+        query.orderByAscending("studentName")
         do {
             students = try query.findObjects()
         } catch {
@@ -48,7 +49,7 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
         navTitle = title
     }
     
-    func setRosterID(id: Int) {
+    func setRosterID(id: String) {
         rosterID = id
     }
 
@@ -69,7 +70,7 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let student: PFObject = students[(indexPath.row)]
-        forwardedStudentID = student["studentID"] as! Int
+        forwardedStudentID = student["studentID"] as! String
         forwardedStudentName = student["studentName"] as! String
         segue()
     }

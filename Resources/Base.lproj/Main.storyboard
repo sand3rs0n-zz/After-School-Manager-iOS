@@ -568,7 +568,7 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4p2-GL-xjX">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
-                                    <navigationItem title="Student Roster (and schedule absence)/Today's Roster/etc..." id="qL4-sS-Mp2">
+                                    <navigationItem title="Student Roster (and schedule absence)" id="qL4-sS-Mp2">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="Ha2-tB-iT3">
                                             <connections>
                                                 <segue destination="TCV-eA-lPE" kind="unwind" unwindAction="rosterSelectUnwind:" id="BvM-Tc-yF2"/>
@@ -1157,7 +1157,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="B3N-ZR-hh2"/>
-        <segue reference="iJe-EX-niG"/>
+        <segue reference="Y7f-jV-sTv"/>
         <segue reference="DGb-jK-4wo"/>
     </inferredMetricsTieBreakers>
 </document>

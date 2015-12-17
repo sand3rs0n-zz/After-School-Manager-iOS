@@ -11,7 +11,7 @@ import Parse
 
 class ScheduleAbsenceViewController: UIViewController {
 
-    private var studentID = 0
+    private var studentID = ""
     private var studentName = ""
     @IBOutlet weak var datePicker: UIDatePicker!
     
@@ -26,7 +26,7 @@ class ScheduleAbsenceViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setStudentID(id: Int) {
+    func setStudentID(id: String) {
         studentID = id
     }
 
