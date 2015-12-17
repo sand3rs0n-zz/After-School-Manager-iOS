@@ -1,14 +1,14 @@
 //
-//  InstructorMenuViewController.swift
+//  AllEventsViewController.swift
 //  ParseStarterProject-Swift
 //
-//  Created by Steven on 12/12/15.
+//  Created by Steven on 12/17/15.
 //  Copyright © 2015 Parse. All rights reserved.
 //
 
 import UIKit
 
-class InstructorMenuViewController: UIViewController {
+class AllEventsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +20,7 @@ class InstructorMenuViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func instructorMenuUnwind(segue: UIStoryboardSegue) {
-    }
+    
 
     /*
     // MARK: - Navigation
