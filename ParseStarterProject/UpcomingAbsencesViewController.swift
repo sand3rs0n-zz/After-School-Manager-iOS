@@ -58,15 +58,9 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
         let absence: PFObject = absenceList[indexPath.row]
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         var name = absence["studentName"] as? String
-        let day = String(absence["day"] as! Int)
-        let month = String(absence["month"] as! Int)
-        let year = String(absence["year"] as! Int)
+        let date = Date(day: absence["day"] as! Int, month: absence["month"] as! Int, year: absence["year"] as! Int)
         name?.appendContentsOf("\t\t")
-        name?.appendContentsOf(month)
-        name?.appendContentsOf("/")
-        name?.appendContentsOf(day)
-        name?.appendContentsOf("/")
-        name?.appendContentsOf(year)
+        name?.appendContentsOf(date.fullDateAmerican())
         cell.textLabel?.text = name
         return cell
     }

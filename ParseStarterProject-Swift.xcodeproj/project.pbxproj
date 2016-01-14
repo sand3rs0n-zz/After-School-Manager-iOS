@@ -11,6 +11,7 @@
 		0F8C66951C2322A100D92868 /* AllRostersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C66941C2322A100D92868 /* AllRostersViewController.swift */; };
 		0F8C66971C2322BB00D92868 /* TodayRosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C66961C2322BB00D92868 /* TodayRosterViewController.swift */; };
 		0F8C66991C2322DC00D92868 /* AllEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C66981C2322DC00D92868 /* AllEventsViewController.swift */; };
+		0F8F7CA61C4714E4001D4A4E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F7CA51C4714E4001D4A4E /* Date.swift */; };
 		0FFE6C2E1C1C6FFD00BBEF9B /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C2D1C1C6FFD00BBEF9B /* LogInViewController.swift */; };
 		0FFE6C301C1C702000BBEF9B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C2F1C1C702000BBEF9B /* SignUpViewController.swift */; };
 		0FFE6C361C1C70F900BBEF9B /* StudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C351C1C70F900BBEF9B /* StudentInfoViewController.swift */; };
@@ -36,10 +37,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0F8C66921C23227F00D92868 /* AllStudentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AllStudentsViewController.swift; path = ParseStarterProject/AllStudentsViewController.swift; sourceTree = "<group>"; };
+		0F8C66921C23227F00D92868 /* AllStudentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllStudentsViewController.swift; sourceTree = "<group>"; };
 		0F8C66941C2322A100D92868 /* AllRostersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllRostersViewController.swift; sourceTree = "<group>"; };
 		0F8C66961C2322BB00D92868 /* TodayRosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayRosterViewController.swift; sourceTree = "<group>"; };
 		0F8C66981C2322DC00D92868 /* AllEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllEventsViewController.swift; sourceTree = "<group>"; };
+		0F8F7CA51C4714E4001D4A4E /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		0FFE6C2D1C1C6FFD00BBEF9B /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		0FFE6C2F1C1C702000BBEF9B /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0FFE6C351C1C70F900BBEF9B /* StudentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInfoViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +100,6 @@
 		81BA813C1A49DA1800E65899 = {
 			isa = PBXGroup;
 			children = (
-				0F8C66921C23227F00D92868 /* AllStudentsViewController.swift */,
 				81BA81471A49DA1800E65899 /* ParseStarterProject */,
 				814C3AC51B69877600E307BB /* Resources */,
 				81BA816A1A49DB5600E65899 /* Frameworks */,
@@ -118,7 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
+				0F8C66921C23227F00D92868 /* AllStudentsViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				0F8F7CA51C4714E4001D4A4E /* Date.swift */,
 				0F8C66981C2322DC00D92868 /* AllEventsViewController.swift */,
 				0F8C66961C2322BB00D92868 /* TodayRosterViewController.swift */,
 				0F8C66941C2322A100D92868 /* AllRostersViewController.swift */,
@@ -267,6 +270,7 @@
 				0FFE6C361C1C70F900BBEF9B /* StudentInfoViewController.swift in Sources */,
 				0FFE6C3E1C1C727800BBEF9B /* RosterListViewController.swift in Sources */,
 				0FFE6C3A1C1C712F00BBEF9B /* SignOutViewController.swift in Sources */,
+				0F8F7CA61C4714E4001D4A4E /* Date.swift in Sources */,
 				0FFE6C2E1C1C6FFD00BBEF9B /* LogInViewController.swift in Sources */,
 				0F8C66931C23227F00D92868 /* AllStudentsViewController.swift in Sources */,
 			);

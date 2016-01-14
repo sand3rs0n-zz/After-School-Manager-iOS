@@ -15,6 +15,7 @@ class StudentInfoViewController: UIViewController {
     private var students = [PFObject]()
     private var guardians = [PFObject]()
     private var contactNumbers = [PFObject]()
+    private var dob = Date()
     
     @IBOutlet weak var studentName: UILabel!
     @IBOutlet weak var studentDOB: UILabel!
@@ -40,8 +41,8 @@ class StudentInfoViewController: UIViewController {
         } catch {
         }
 
+        setDOB()
         fillPage()
-
         // Do any additional setup after loading the view.
     }
 
@@ -54,6 +55,7 @@ class StudentInfoViewController: UIViewController {
         let student = students[0]
         studentName.text = student["name"] as? String
         studentSchool.text = student["school"] as? String
+        studentDOB.text = dob.fullDateAmerican()
         studentAge.text = String(calcAge())
         studentGuardians.text = guardianList()
         studentContacts.text = contactList()
@@ -62,9 +64,14 @@ class StudentInfoViewController: UIViewController {
     func setStudentID(id: String) {
        studentID = id
     }
+
+    private func setDOB(){
+        let student = students[0]
+        dob = Date(day: student["birthDay"] as! Int, month: student["birthMonth"] as! Int, year: student["birthYear"] as! Int)
+    }
     
     private func calcAge() -> Int {
-        return 0
+        return dob.age()
     }
 
     private func guardianList() -> String {
