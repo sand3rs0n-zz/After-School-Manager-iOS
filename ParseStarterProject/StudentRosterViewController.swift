@@ -19,7 +19,8 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
     private var navTitle = ""
     
     private var forwardedStudentID = ""
-    private var forwardedStudentName = ""
+    private var forwardedStudentLastName = ""
+    private var forwardedStudentFirstName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
         let query = PFQuery(className: "StudentRosters")
         query.whereKey("username", equalTo: (currentUser?.username)!)
         query.whereKey("rosterID", equalTo: rosterID)
-        query.orderByAscending("studentName")
+        query.orderByAscending("studentLastName")
         do {
             students = try query.findObjects()
         } catch {
@@ -60,7 +61,8 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let student: PFObject = students[indexPath.row]
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = student["studentName"] as? String
+        let name = (student["studentFirstName"] as? String)! + " " + (student["studentLastName"] as? String)!
+        cell.textLabel?.text = name
         return cell
     }
     
@@ -71,7 +73,8 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let student: PFObject = students[(indexPath.row)]
         forwardedStudentID = student["studentID"] as! String
-        forwardedStudentName = student["studentName"] as! String
+        forwardedStudentLastName = student["studentLastName"] as! String
+        forwardedStudentFirstName = student["studentFirstName"] as! String
         segue()
     }
     
@@ -89,14 +92,15 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
         if (rosterState == 2) {
             let savc = segue.destinationViewController as? ScheduleAbsenceViewController
             savc?.setStudentID(forwardedStudentID)
-            savc?.setStudentName(forwardedStudentName)
+            savc?.setStudentLastName(forwardedStudentLastName)
+            savc?.setStudentFirstName(forwardedStudentFirstName)
         } else if (rosterState == 0) {
             let sivc = segue.destinationViewController as? StudentInfoViewController
             sivc?.setStudentID(forwardedStudentID)
         } else if (rosterState == 1) {
             let sovc = segue.destinationViewController as? SignOutViewController
             sovc?.setStudentID(forwardedStudentID)
-            sovc?.setTitleValue(forwardedStudentName)
+            sovc?.setTitleValue(forwardedStudentFirstName + forwardedStudentLastName)
             sovc?.setRosterType(rosterType)
         }
     }

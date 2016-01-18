@@ -21,6 +21,8 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
         let query = PFQuery(className: "AbsencesList")
         query.whereKey("username", equalTo: (currentUser?.username)!)
         query.whereKey("year", greaterThanOrEqualTo: year)
+        query.orderByAscending("month")
+        query.addAscendingOrder("day")
         do {
             absenceList = try query.findObjects()
         } catch {
@@ -57,10 +59,10 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let absence: PFObject = absenceList[indexPath.row]
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        var name = absence["studentName"] as? String
+        var name = (absence["studentFirstName"] as? String)! + " " + (absence["studentLastName"] as? String)!
         let date = Date(day: absence["day"] as! Int, month: absence["month"] as! Int, year: absence["year"] as! Int)
-        name?.appendContentsOf("\t\t")
-        name?.appendContentsOf(date.fullDateAmerican())
+        name.appendContentsOf("\t\t")
+        name.appendContentsOf(date.fullDateAmerican())
         cell.textLabel?.text = name
         return cell
     }

@@ -12,6 +12,7 @@
 		0F8C66971C2322BB00D92868 /* TodayRosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C66961C2322BB00D92868 /* TodayRosterViewController.swift */; };
 		0F8C66991C2322DC00D92868 /* AllEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C66981C2322DC00D92868 /* AllEventsViewController.swift */; };
 		0F8F7CA61C4714E4001D4A4E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F7CA51C4714E4001D4A4E /* Date.swift */; };
+		0F8F7CAC1C4D311A001D4A4E /* AddOrEditStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F7CAB1C4D311A001D4A4E /* AddOrEditStudentViewController.swift */; };
 		0FFE6C2E1C1C6FFD00BBEF9B /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C2D1C1C6FFD00BBEF9B /* LogInViewController.swift */; };
 		0FFE6C301C1C702000BBEF9B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C2F1C1C702000BBEF9B /* SignUpViewController.swift */; };
 		0FFE6C361C1C70F900BBEF9B /* StudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C351C1C70F900BBEF9B /* StudentInfoViewController.swift */; };
@@ -42,6 +43,7 @@
 		0F8C66961C2322BB00D92868 /* TodayRosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayRosterViewController.swift; sourceTree = "<group>"; };
 		0F8C66981C2322DC00D92868 /* AllEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllEventsViewController.swift; sourceTree = "<group>"; };
 		0F8F7CA51C4714E4001D4A4E /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		0F8F7CAB1C4D311A001D4A4E /* AddOrEditStudentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditStudentViewController.swift; sourceTree = "<group>"; };
 		0FFE6C2D1C1C6FFD00BBEF9B /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		0FFE6C2F1C1C702000BBEF9B /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0FFE6C351C1C70F900BBEF9B /* StudentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInfoViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				0F8C66921C23227F00D92868 /* AllStudentsViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				0F8F7CAB1C4D311A001D4A4E /* AddOrEditStudentViewController.swift */,
 				0F8F7CA51C4714E4001D4A4E /* Date.swift */,
 				0F8C66981C2322DC00D92868 /* AllEventsViewController.swift */,
 				0F8C66961C2322BB00D92868 /* TodayRosterViewController.swift */,
@@ -259,6 +262,7 @@
 				0FFE6C421C1C72BF00BBEF9B /* RosterTypeViewController.swift in Sources */,
 				0FFE6C381C1C712100BBEF9B /* SignOutHistoryViewController.swift in Sources */,
 				0F8C66951C2322A100D92868 /* AllRostersViewController.swift in Sources */,
+				0F8F7CAC1C4D311A001D4A4E /* AddOrEditStudentViewController.swift in Sources */,
 				0FFE6C521C208E9600BBEF9B /* ScheduleAbsenceViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				0FFE6C3C1C1C724D00BBEF9B /* InstructorMenuViewController.swift in Sources */,
@@ -380,6 +384,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "ParseStarterProject-Swift";
 			};
@@ -395,6 +400,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "ParseStarterProject-Swift";
 			};

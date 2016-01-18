@@ -17,7 +17,9 @@ class StudentInfoViewController: UIViewController {
     private var contactNumbers = [PFObject]()
     private var dob = Date()
     
-    @IBOutlet weak var studentName: UILabel!
+
+    @IBOutlet weak var studentFirstName: UILabel!
+    @IBOutlet weak var studentLastName: UILabel!
     @IBOutlet weak var studentDOB: UILabel!
     @IBOutlet weak var studentSchool: UILabel!
     @IBOutlet weak var studentGuardians: UILabel!
@@ -53,7 +55,8 @@ class StudentInfoViewController: UIViewController {
     
     private func fillPage() {
         let student = students[0]
-        studentName.text = student["name"] as? String
+        studentFirstName.text = student["firstName"] as? String
+        studentLastName.text = student["lastName"] as? String
         studentSchool.text = student["school"] as? String
         studentDOB.text = dob.fullDateAmerican()
         studentAge.text = String(calcAge())

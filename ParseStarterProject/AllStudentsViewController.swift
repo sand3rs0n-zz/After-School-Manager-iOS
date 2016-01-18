@@ -12,6 +12,7 @@ import Parse
 class AllStudentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     private var studentList = [PFObject]()
+    private var forwardedStudentID = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class AllStudentsViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let student: PFObject = studentList[indexPath.row]
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = student["name"] as? String
+        cell.textLabel?.text = (student["firstName"] as? String)! + " " + (student["lastName"] as? String)!
         return cell
     }
 
@@ -43,6 +44,25 @@ class AllStudentsViewController: UIViewController, UITableViewDataSource, UITabl
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let student: PFObject = studentList[(indexPath.row)]
+        forwardedStudentID = student.objectId!
+        performSegueWithIdentifier("InstructorMenuStudentsToEditStudent", sender: self)
+    }
+
+    @IBAction func instructorMenuStudentsUnwind(segue: UIStoryboardSegue) {
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let aesvc = segue.destinationViewController as? AddOrEditStudentViewController
+
+        if (segue.identifier == "InstructorMenuStudentsToAddStudent") {
+            aesvc?.setTitleValue("Add New Student")
+            aesvc?.setAddUpdateButtonText("Add Student")
+        } else if (segue.identifier == "InstructorMenuStudentsToEditStudent") {
+            aesvc?.setTitleValue("Edit Student")
+            aesvc?.setAddUpdateButtonText("Update Student")
+            aesvc?.setUpdate(true)
+            aesvc?.setStudentID(forwardedStudentID)
+        }
     }
 
     /*

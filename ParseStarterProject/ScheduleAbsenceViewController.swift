@@ -12,7 +12,8 @@ import Parse
 class ScheduleAbsenceViewController: UIViewController {
 
     private var studentID = ""
-    private var studentName = ""
+    private var studentLastName = ""
+    private var studentFirstName = ""
     @IBOutlet weak var datePicker: UIDatePicker!
     
     override func viewDidLoad() {
@@ -30,8 +31,12 @@ class ScheduleAbsenceViewController: UIViewController {
         studentID = id
     }
 
-    func setStudentName(name: String) {
-        studentName = name
+    func setStudentLastName(name: String) {
+        studentLastName = name
+    }
+
+    func setStudentFirstName(name: String) {
+        studentFirstName = name
     }
 
     @IBAction func schedule(sender: AnyObject) {
@@ -44,7 +49,8 @@ class ScheduleAbsenceViewController: UIViewController {
 
         let absence = PFObject(className: "AbsencesList")
         absence["username"] = (currentUser?.username)!
-        absence["studentName"] = studentName
+        absence["studentLastName"] = studentLastName
+        absence["studentFirstName"] = studentFirstName
         absence["studentID"] = studentID
         absence["day"] = Int(dateArr[1])
         absence["month"] = Int(dateArr[0])
