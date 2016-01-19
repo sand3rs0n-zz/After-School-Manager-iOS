@@ -16,6 +16,7 @@ class SignOutViewController: UIViewController {
     private var signOutGuardian = ""
 
     @IBOutlet weak var titleBar: UINavigationItem!
+    @IBOutlet weak var signatureBox: SignatureView!
     private var navTitle = ""
     
     override func viewDidLoad() {
@@ -42,13 +43,23 @@ class SignOutViewController: UIViewController {
         rosterType = type
     }
 
+    @IBAction func clearSignature(sender: AnyObject) {
+        signatureBox.setLines([])
+        signatureBox.setNeedsDisplay()
+    }
+
     @IBAction func signOut(sender: AnyObject) {
-       // if (signOutGuardian != "") {
+        if (/*signOutGuardian != "" ||*/ !signatureBox.getLines().isEmpty) {
             let signOutRecord = PFObject(className: "SignOuts")
             signOutRecord["studentID"] = studentID
             signOutRecord["signOutGuardian"] = signOutGuardian
             signOutRecord["rosterType"] = rosterType
-           // signOutRecord["timestamp"] =
+            let timestamp = Date()
+            signOutRecord["day"] = timestamp.getCurrentDay()
+            signOutRecord["month"] = timestamp.getCurrentMonth()
+            signOutRecord["year"] = timestamp.getCurrentYear()
+            signOutRecord["hour"] = timestamp.getCurrentHour()
+            signOutRecord["minute"] = timestamp.getCurrentMinute()
             signOutRecord["username"] = (currentUser?.username)!
 
             signOutRecord.saveInBackgroundWithBlock {
@@ -60,9 +71,9 @@ class SignOutViewController: UIViewController {
                     print("Error")
                 }
             }
-       /* } else {
+        } else {
             print("error message")
-        }*/
+        }
     }
 
     /*

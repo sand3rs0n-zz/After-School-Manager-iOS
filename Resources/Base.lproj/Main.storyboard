@@ -420,7 +420,7 @@
                                 <rect key="frame" x="270" y="144" width="52" height="30"/>
                                 <state key="normal" title="Rosters"/>
                                 <connections>
-                                    <segue destination="CSo-vz-wWk" kind="show" id="uRc-uX-CAG"/>
+                                    <segue destination="CSo-vz-wWk" kind="show" id="onh-uh-qGN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5QI-jC-lIU">
@@ -467,7 +467,11 @@
                                                 <segue destination="hWg-yh-gAL" kind="unwind" unwindAction="instructorMenuUnwind:" id="tCs-SV-QyQ"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="PNK-xp-X4o"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="596-dD-fmc">
+                                            <connections>
+                                                <segue destination="G5n-yL-Pni" kind="show" id="jso-AR-xa8"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -492,11 +496,174 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="rosterListTable" destination="21N-DM-vPR" id="xwS-JJ-FZM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WKN-s3-kJ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hWg-yh-gAL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3162" y="-539"/>
+            <point key="canvasLocation" x="3036" y="420"/>
+        </scene>
+        <!--Create Roster View Controller-->
+        <scene sceneID="ydi-xT-URM">
+            <objects>
+                <viewController id="G5n-yL-Pni" customClass="CreateRosterViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="idW-qD-v88"/>
+                        <viewControllerLayoutGuide type="bottom" id="T6m-Qb-Zv7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vT6-YW-Vmq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mmG-aA-BIW">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Create Roster" id="9eq-wO-bPG">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="zxR-rj-7Wu">
+                                            <connections>
+                                                <segue destination="dJF-mt-a42" kind="unwind" identifier="CreateRosterToRosterList" unwindAction="returnToAllRostersUnwind:" id="wmv-r4-Q4a"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Roster Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1J-ce-XNP">
+                                <rect key="frame" x="61" y="102" width="99" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqS-qX-0rC">
+                                <rect key="frame" x="74" y="313" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXX-eE-fkc">
+                                <rect key="frame" x="78" y="384" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rbn-g4-X2J">
+                                <rect key="frame" x="281" y="93" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rja-ul-mMn">
+                                <rect key="frame" x="172" y="289" width="301" height="63"/>
+                                <date key="date" timeIntervalSinceReferenceDate="474833435.28024101">
+                                    <!--2016-01-18 18:10:35 +0000-->
+                                </date>
+                            </datePicker>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ihb-EG-Mug">
+                                <rect key="frame" x="172" y="215" width="301" height="63"/>
+                                <date key="date" timeIntervalSinceReferenceDate="474833435.28024101">
+                                    <!--2016-01-18 18:10:35 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Udu-x1-RJ3">
+                                <rect key="frame" x="278" y="454" width="95" height="30"/>
+                                <state key="normal" title="Create Roster"/>
+                                <connections>
+                                    <action selector="createRoster:" destination="G5n-yL-Pni" eventType="touchUpInside" id="JP0-rB-lux"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick Up Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ych-Hv-LHa">
+                                <rect key="frame" x="62" y="229" width="102" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dra-FE-CKH">
+                                <rect key="frame" x="212" y="137" width="234" height="63"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="G5n-yL-Pni" id="9xo-L1-hTt"/>
+                                    <outlet property="delegate" destination="G5n-yL-Pni" id="azM-pz-dPH"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Roster Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2C-IG-R6g">
+                                <rect key="frame" x="55" y="158" width="92" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="nLd-BW-jNR">
+                                <rect key="frame" x="172" y="363" width="301" height="63"/>
+                                <date key="date" timeIntervalSinceReferenceDate="474833435.28024101">
+                                    <!--2016-01-18 18:10:35 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="endDate" destination="nLd-BW-jNR" id="k04-la-dsa"/>
+                        <outlet property="endDateLabel" destination="rXX-eE-fkc" id="ASo-F4-3wa"/>
+                        <outlet property="pickUpTime" destination="ihb-EG-Mug" id="GJa-cF-Wdp"/>
+                        <outlet property="rosterName" destination="Rbn-g4-X2J" id="8L2-Ul-6OT"/>
+                        <outlet property="rosterType" destination="Dra-FE-CKH" id="RSb-ZS-Rl3"/>
+                        <outlet property="startDate" destination="rja-ul-mMn" id="Lbt-fs-2lB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NxI-xy-5C4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dJF-mt-a42" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3740" y="420"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="sXf-p8-GhL">
+            <objects>
+                <viewController id="X41-nd-CDK" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cgB-Pj-wEO"/>
+                        <viewControllerLayoutGuide type="bottom" id="BqO-gz-6cd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Ih-Oi-yje">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tcb-CG-ljx">
+                                <rect key="frame" x="229" y="77" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="approved pick ups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7j-ZI-xfl">
+                                <rect key="frame" x="83" y="148" width="141" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="list of  week days as buttons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68G-UB-IW0">
+                                <rect key="frame" x="18" y="233" width="216" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delete from Roster Button" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5n-l0-cKI">
+                                <rect key="frame" x="111" y="311" width="199" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mp9-Y2-zTc">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Edit/Add Student Attendance" id="GYa-FH-z2d">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="MKp-CS-QlO"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="StS-I0-Ki7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3036" y="-282"/>
         </scene>
         <!--Roster List View Controller-->
         <scene sceneID="34T-zs-1o3">
@@ -513,7 +680,7 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aei-82-i3j">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="Q4B-oH-p58">
+                                    <navigationItem title="Rosters" id="Q4B-oH-p58">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="Ceu-Wp-PHd">
                                             <connections>
                                                 <segue destination="IDq-JR-cPp" kind="unwind" unwindAction="rosterTypeSelectUnwind:" id="dCp-pD-esg"/>
@@ -546,6 +713,7 @@
                     <connections>
                         <outlet property="titleBar" destination="Q4B-oH-p58" id="MWw-1H-GEl"/>
                         <segue destination="BRu-r1-89J" kind="show" identifier="RosterSelectToStudentRoster" id="Vnx-Va-1xR"/>
+                        <segue destination="zAI-zz-xCP" kind="show" identifier="RostersToSignOutRecords" id="xD8-wK-u5d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUY-OB-tzn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -640,29 +808,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRf-dd-RgU">
-                                <rect key="frame" x="238" y="243" width="34" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign out text box here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMf-7D-gxg">
-                                <rect key="frame" x="123" y="301" width="168" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adp-qQ-87d">
                                 <rect key="frame" x="257" y="373" width="36" height="30"/>
                                 <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearSignature:" destination="gog-WY-KHs" eventType="touchUpInside" id="75K-o8-eM4"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdf-R8-S5j">
-                                <rect key="frame" x="15" y="411" width="510" height="147"/>
-                                <string key="text">Marks student as signed out, creates timestamp and adds to DB, has a pop up that says who was signed out, waits a few seconds and goes to home page</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcr-lK-5nc">
                                 <rect key="frame" x="146" y="373" width="55" height="30"/>
                                 <state key="normal" title="Confirm"/>
@@ -670,17 +822,28 @@
                                     <action selector="signOut:" destination="gog-WY-KHs" eventType="touchUpInside" id="iq3-w7-rnh"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRf-dd-RgU">
+                                <rect key="frame" x="182" y="177" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kx4-GN-RH2" customClass="SignatureView" customModule="ParseStarterProject_Swift" customModuleProvider="target">
+                                <rect key="frame" x="20" y="206" width="502" height="153"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="signatureBox" destination="kx4-GN-RH2" id="9AA-3v-fQc"/>
                         <outlet property="titleBar" destination="2dK-q4-HQI" id="m8h-oo-cGK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vN-Xp-1Hy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="JSP-vD-7dw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1659" y="2402"/>
+            <point key="canvasLocation" x="1635" y="3164"/>
         </scene>
         <!--Schedule Absence View Controller-->
         <scene sceneID="djs-xQ-ZPa">
@@ -730,7 +893,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9La-iy-67c" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="fe2-yQ-43w" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1587" y="3109"/>
+            <point key="canvasLocation" x="921" y="3164"/>
         </scene>
         <!--Student Info View Controller-->
         <scene sceneID="ggh-Ei-N0I">
@@ -780,18 +943,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Msw-gz-LcL">
-                                <rect key="frame" x="33" y="379" width="148" height="30"/>
-                                <state key="normal" title="After School Program"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YH4-mh-xnz">
-                                <rect key="frame" x="49" y="417" width="79" height="30"/>
-                                <state key="normal" title="Day Camps"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V97-Bs-fFK">
-                                <rect key="frame" x="37" y="462" width="102" height="30"/>
-                                <state key="normal" title="Weekly Camps"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Emergency Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aw5-1V-vQd">
                                 <rect key="frame" x="49" y="279" width="160" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -858,6 +1009,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Msw-gz-LcL">
+                                <rect key="frame" x="36" y="468" width="148" height="30"/>
+                                <state key="normal" title="After School Program"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YH4-mh-xnz">
+                                <rect key="frame" x="71" y="374" width="79" height="30"/>
+                                <state key="normal" title="Day Camps"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V97-Bs-fFK">
+                                <rect key="frame" x="59" y="419" width="102" height="30"/>
+                                <state key="normal" title="Weekly Camps"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -874,7 +1037,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="up2-Mx-LTH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="OBu-Vz-ZW4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1649" y="1766"/>
+            <point key="canvasLocation" x="1608" y="2439"/>
         </scene>
         <!--Sign Out History View Controller-->
         <scene sceneID="y5p-ZX-Abi">
@@ -888,44 +1051,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="List of Sign out Time stamps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyf-8e-k56">
-                                <rect key="frame" x="103" y="51" width="218" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaX-rm-7rl">
-                                <rect key="frame" x="351" y="51" width="43" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsZ-Aq-0p6">
-                                <rect key="frame" x="82" y="97" width="36" height="21"/>
+                                <rect key="frame" x="29" y="97" width="36" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWN-jq-hPm">
-                                <rect key="frame" x="321" y="96" width="38" height="21"/>
+                                <rect key="frame" x="100" y="97" width="38" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Who Signed Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldG-KU-mJY">
-                                <rect key="frame" x="393" y="97" width="126" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ayk-iC-30x">
-                                <rect key="frame" x="174" y="97" width="50" height="21"/>
+                                <rect key="frame" x="174" y="97" width="126" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Signed Out/Absent (scheduled/UNSCHEDULED!/School closed/etc)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obU-C1-OdA">
-                                <rect key="frame" x="27" y="176" width="517" height="21"/>
+                                <rect key="frame" x="29" y="320" width="517" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="shU-k9-d0p">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Sign Out Records" id="bG6-AC-sLN">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="a7n-m7-8rC"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaX-rm-7rl">
+                                <rect key="frame" x="381" y="97" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Types" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ayk-iC-30x">
+                                <rect key="frame" x="34" y="278" width="94" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -936,7 +1101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mk4-it-tDW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1799" y="1116"/>
+            <point key="canvasLocation" x="1629" y="1738"/>
         </scene>
         <!--Add Or Edit Student View Controller-->
         <scene sceneID="2LT-lw-fWw">
@@ -1001,28 +1166,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-4B-LaB">
-                                <rect key="frame" x="222" y="450" width="103" height="30"/>
-                                <state key="normal" title="Delete Student"/>
-                                <connections>
-                                    <action selector="deleteStudent:" destination="5ta-4Q-AE5" eventType="touchUpInside" id="yWH-IK-It9"/>
-                                </connections>
-                            </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhh-Io-bk8">
                                 <rect key="frame" x="178" y="122" width="290" height="51"/>
                                 <date key="date" timeIntervalSinceReferenceDate="-347102723.19527435">
                                     <!--1990-01-01 14:34:36 +0000-->
                                 </date>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxN-0l-Gsh">
-                                <rect key="frame" x="247" y="366" width="83" height="30"/>
-                                <state key="normal" title="Add/Update"/>
-                                <connections>
-                                    <action selector="updateStudent:" destination="5ta-4Q-AE5" eventType="touchUpInside" id="Y07-Lq-vl3"/>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AML-he-uu3">
-                                <rect key="frame" x="176" y="321" width="125" height="29"/>
+                                <rect key="frame" x="72" y="326" width="125" height="29"/>
                                 <segments>
                                     <segment title="Active"/>
                                     <segment title="Inactive"/>
@@ -1040,24 +1191,65 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Signout Records" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RG-SV-9Ei">
+                                <rect key="frame" x="68" y="412" width="127" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGl-hh-1dL">
+                                <rect key="frame" x="69" y="524" width="148" height="30"/>
+                                <state key="normal" title="After School Program"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Vf-dD-Xhf">
+                                <rect key="frame" x="98" y="441" width="79" height="30"/>
+                                <state key="normal" title="Day Camps"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agA-uI-arf">
+                                <rect key="frame" x="86" y="486" width="102" height="30"/>
+                                <state key="normal" title="Weekly Camps"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1l-JS-NKf">
+                                <rect key="frame" x="90" y="374" width="94" height="30"/>
+                                <state key="normal" title="Add to Roster"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-4B-LaB">
+                                <rect key="frame" x="316" y="362" width="103" height="30"/>
+                                <state key="normal" title="Delete Student"/>
+                                <connections>
+                                    <action selector="deleteStudent:" destination="5ta-4Q-AE5" eventType="touchUpInside" id="yWH-IK-It9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxN-0l-Gsh">
+                                <rect key="frame" x="323" y="333" width="83" height="30"/>
+                                <state key="normal" title="Add/Update"/>
+                                <connections>
+                                    <action selector="updateStudent:" destination="5ta-4Q-AE5" eventType="touchUpInside" id="Y07-Lq-vl3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="active" destination="AML-he-uu3" id="K2J-Ca-CMg"/>
+                        <outlet property="addToRoster" destination="D1l-JS-NKf" id="psK-1w-JjQ"/>
                         <outlet property="addUpdateButton" destination="lxN-0l-Gsh" id="bZe-Sk-6O7"/>
+                        <outlet property="afterSchoolProgramRosters" destination="AGl-hh-1dL" id="bcJ-6G-GNd"/>
                         <outlet property="birthdayPicker" destination="zhh-Io-bk8" id="Rn6-gb-xJZ"/>
+                        <outlet property="dayCampsRosters" destination="7Vf-dD-Xhf" id="gG1-EY-adZ"/>
                         <outlet property="deleteButton" destination="fzI-4B-LaB" id="lbQ-Ne-FZh"/>
                         <outlet property="firstName" destination="gUv-Rs-PYh" id="ob7-wT-lwl"/>
                         <outlet property="lastName" destination="IF1-d8-CVF" id="Wwf-IS-yde"/>
                         <outlet property="school" destination="C7c-ix-HeE" id="ZF4-OF-aJe"/>
+                        <outlet property="signOutRecordsLabel" destination="4RG-SV-9Ei" id="SHg-zC-nxH"/>
                         <outlet property="titleBar" destination="HfP-DW-vmg" id="Fjg-ko-Tgv"/>
+                        <outlet property="weeklyCampsRosters" destination="agA-uI-arf" id="KRa-1g-aT4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qK-1D-B5S" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rTz-Fw-1yb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2469" y="-1050"/>
+            <point key="canvasLocation" x="2327" y="-929"/>
         </scene>
         <!--All Students View Controller-->
         <scene sceneID="wo1-ei-Kbv">
@@ -1110,13 +1302,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="studentListTable" destination="oKB-rS-oqG" id="xRq-LM-Kwk"/>
                         <segue destination="5ta-4Q-AE5" kind="show" identifier="InstructorMenuStudentsToEditStudent" id="fWu-bx-BN9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wlV-pA-NPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="gtP-5z-ug6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2469" y="-390"/>
+            <point key="canvasLocation" x="2327" y="-282"/>
         </scene>
         <!--Today Roster View Controller-->
         <scene sceneID="03X-aY-UyG">
@@ -1156,7 +1349,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yx6-EF-7oR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="teT-yz-1ff" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3020" y="1020"/>
+            <point key="canvasLocation" x="2302" y="1102"/>
         </scene>
         <!--All Events View Controller-->
         <scene sceneID="88y-2g-gDE">
@@ -1196,13 +1389,13 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ljC-0Y-7Ga" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="X4Q-bJ-HV7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3066" y="371"/>
+            <point key="canvasLocation" x="3036" y="1102"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="B3N-ZR-hh2"/>
         <segue reference="iJe-EX-niG"/>
         <segue reference="DGb-jK-4wo"/>
-        <segue reference="fWu-bx-BN9"/>
+        <segue reference="N81-ja-h19"/>
     </inferredMetricsTieBreakers>
 </document>

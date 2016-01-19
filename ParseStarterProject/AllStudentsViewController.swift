@@ -11,24 +11,30 @@ import Parse
 
 class AllStudentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var studentListTable: UITableView!
+
     private var studentList = [PFObject]()
     private var forwardedStudentID = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let query = PFQuery(className: "StudentProfile")
-        query.whereKey("username", equalTo: (currentUser?.username)!)
-        do {
-            studentList = try query.findObjects()
-        } catch {
-        }
+        getStudents()
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    private func getStudents() {
+        let query = PFQuery(className: "StudentProfile")
+        query.whereKey("username", equalTo: (currentUser?.username)!)
+        do {
+            studentList = try query.findObjects()
+        } catch {
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -49,6 +55,10 @@ class AllStudentsViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     @IBAction func instructorMenuStudentsUnwind(segue: UIStoryboardSegue) {
+        getStudents()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.studentListTable.reloadData()
+        })
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

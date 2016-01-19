@@ -11,24 +11,27 @@ import Parse
 
 class AllRostersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var rosterListTable: UITableView!
     private var rosterList = [PFObject]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let query = PFQuery(className: "Rosters")
-        query.whereKey("username", equalTo: (currentUser?.username)!)
-        do {
-            rosterList = try query.findObjects()
-        } catch {
-        }
-
+        getRosters()
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    private func getRosters() {
+        let query = PFQuery(className: "Rosters")
+        query.whereKey("username", equalTo: (currentUser?.username)!)
+        do {
+            rosterList = try query.findObjects()
+        } catch {
+        }
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -46,6 +49,12 @@ class AllRostersViewController: UIViewController, UITableViewDataSource, UITable
         let roster: PFObject = rosterList[(indexPath.row)]
     }
 
+    @IBAction func returnToAllRostersUnwind(segue: UIStoryboardSegue) {
+        getRosters()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.rosterListTable.reloadData()
+        })
+    }
 
     /*
     // MARK: - Navigation

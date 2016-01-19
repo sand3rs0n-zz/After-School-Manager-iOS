@@ -100,7 +100,7 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
         } else if (rosterState == 1) {
             let sovc = segue.destinationViewController as? SignOutViewController
             sovc?.setStudentID(forwardedStudentID)
-            sovc?.setTitleValue(forwardedStudentFirstName + forwardedStudentLastName)
+            sovc?.setTitleValue(forwardedStudentFirstName + " " + forwardedStudentLastName)
             sovc?.setRosterType(rosterType)
         }
     }

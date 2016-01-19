@@ -27,6 +27,7 @@ class Date {
         year = 1900
         hour = 0
         minute = 0
+        setCurrentDate()
     }
 
     init (hour: Int, minute: Int) {
@@ -119,6 +120,26 @@ class Date {
         currentDay = calendar.components(.Day, fromDate: date).day
         currentHour = calendar.components(.Hour, fromDate: date).hour
         currentMinute = calendar.components(.Minute, fromDate: date).minute
+    }
+
+    func getCurrentDay() -> Int {
+        return currentDay
+    }
+
+    func getCurrentMonth() -> Int {
+        return currentMonth
+    }
+
+    func getCurrentYear() -> Int {
+        return currentYear
+    }
+
+    func getCurrentHour() -> Int {
+        return currentHour
+    }
+
+    func getCurrentMinute() -> Int {
+        return currentMinute
     }
 
 }
