@@ -87,7 +87,7 @@ class AddOrEditStudentViewController: UIViewController {
     private func setDate(student: PFObject) {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        let dateString = String((student["birthDay"] as? Int)!) + "/" + String((student["birthMonth"] as? Int)!) + "/" + String((student["birthYear"] as? Int)!)
+        let dateString = String(student["birthDay"]) + "/" + String(student["birthMonth"]) + "/" + String(student["birthYear"])
         let convertedStartDate = dateFormatter.dateFromString(dateString)
         birthdayPicker.date = convertedStartDate!
     }
@@ -186,9 +186,9 @@ class AddOrEditStudentViewController: UIViewController {
         }
         }
         myAlertController.addAction(nextAction)
-
-
         presentViewController(myAlertController, animated: true, completion: nil)
+
+        //also delete all relevant info
     }
 
     /*

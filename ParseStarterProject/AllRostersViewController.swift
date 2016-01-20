@@ -14,6 +14,10 @@ class AllRostersViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var rosterListTable: UITableView!
     private var rosterList = [PFObject]()
 
+    private var forwardedRosterID = ""
+    private var forwardedRosterName = ""
+    private var forwardedRoster = [PFObject]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         getRosters()
@@ -47,6 +51,10 @@ class AllRostersViewController: UIViewController, UITableViewDataSource, UITable
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let roster: PFObject = rosterList[(indexPath.row)]
+        forwardedRosterID = roster.objectId!
+        forwardedRosterName = roster["name"] as! String
+        forwardedRoster = [PFObject](arrayLiteral: roster)
+        performSegueWithIdentifier("AllRostersToSpecificRoster", sender: self)
     }
 
     @IBAction func returnToAllRostersUnwind(segue: UIStoryboardSegue) {
@@ -54,6 +62,20 @@ class AllRostersViewController: UIViewController, UITableViewDataSource, UITable
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.rosterListTable.reloadData()
         })
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "AllRostersToSpecificRoster") {
+            let rvc = segue.destinationViewController as? RosterViewController
+            rvc?.setTitleValue(forwardedRosterName)
+            rvc?.setRosterID(forwardedRosterID)
+            rvc?.setRoster(forwardedRoster)
+        } else if (segue.identifier == "AllRostersToNewRoster") {
+            let crvc = segue.destinationViewController as? CreateRosterViewController
+            crvc?.setState(0)
+            crvc?.setTitleValue("Create Roster")
+            crvc?.setCreateRosterButtonValue("Create Roster")
+        }
     }
 
     /*
