@@ -17,6 +17,8 @@
 		0F8F7CB21C4EB7B9001D4A4E /* SignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F7CB11C4EB7B9001D4A4E /* SignatureView.swift */; };
 		0F8F7CB41C4EB8CE001D4A4E /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F7CB31C4EB8CE001D4A4E /* Line.swift */; };
 		0FB3D1D81C4F07E9008F4FCD /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB3D1D71C4F07E9008F4FCD /* RosterViewController.swift */; };
+		0FB3D1DA1C52DFBC008F4FCD /* AddOrEditAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB3D1D91C52DFBC008F4FCD /* AddOrEditAttendanceViewController.swift */; };
+		0FB3D1DE1C52F787008F4FCD /* SelectStudentToAddToRosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB3D1DD1C52F787008F4FCD /* SelectStudentToAddToRosterViewController.swift */; };
 		0FFE6C2E1C1C6FFD00BBEF9B /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C2D1C1C6FFD00BBEF9B /* LogInViewController.swift */; };
 		0FFE6C301C1C702000BBEF9B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C2F1C1C702000BBEF9B /* SignUpViewController.swift */; };
 		0FFE6C361C1C70F900BBEF9B /* StudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE6C351C1C70F900BBEF9B /* StudentInfoViewController.swift */; };
@@ -51,7 +53,9 @@
 		0F8F7CAD1C4D60A5001D4A4E /* CreateRosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRosterViewController.swift; sourceTree = "<group>"; };
 		0F8F7CB11C4EB7B9001D4A4E /* SignatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureView.swift; sourceTree = "<group>"; };
 		0F8F7CB31C4EB8CE001D4A4E /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
-		0FB3D1D71C4F07E9008F4FCD /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RosterViewController.swift; path = ParseStarterProject/RosterViewController.swift; sourceTree = "<group>"; };
+		0FB3D1D71C4F07E9008F4FCD /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
+		0FB3D1D91C52DFBC008F4FCD /* AddOrEditAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditAttendanceViewController.swift; sourceTree = "<group>"; };
+		0FB3D1DD1C52F787008F4FCD /* SelectStudentToAddToRosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentToAddToRosterViewController.swift; sourceTree = "<group>"; };
 		0FFE6C2D1C1C6FFD00BBEF9B /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		0FFE6C2F1C1C702000BBEF9B /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0FFE6C351C1C70F900BBEF9B /* StudentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInfoViewController.swift; sourceTree = "<group>"; };
@@ -110,7 +114,6 @@
 		81BA813C1A49DA1800E65899 = {
 			isa = PBXGroup;
 			children = (
-				0FB3D1D71C4F07E9008F4FCD /* RosterViewController.swift */,
 				81BA81471A49DA1800E65899 /* ParseStarterProject */,
 				814C3AC51B69877600E307BB /* Resources */,
 				81BA816A1A49DB5600E65899 /* Frameworks */,
@@ -130,12 +133,15 @@
 			isa = PBXGroup;
 			children = (
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
+				0FB3D1DD1C52F787008F4FCD /* SelectStudentToAddToRosterViewController.swift */,
 				0F8C66921C23227F00D92868 /* AllStudentsViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				0FB3D1D71C4F07E9008F4FCD /* RosterViewController.swift */,
+				0FB3D1D91C52DFBC008F4FCD /* AddOrEditAttendanceViewController.swift */,
 				0F8F7CAD1C4D60A5001D4A4E /* CreateRosterViewController.swift */,
 				0F8F7CAB1C4D311A001D4A4E /* AddOrEditStudentViewController.swift */,
-				0F8F7CA51C4714E4001D4A4E /* Date.swift */,
 				0F8C66981C2322DC00D92868 /* AllEventsViewController.swift */,
+				0F8F7CA51C4714E4001D4A4E /* Date.swift */,
 				0F8F7CB11C4EB7B9001D4A4E /* SignatureView.swift */,
 				0F8F7CB31C4EB8CE001D4A4E /* Line.swift */,
 				0F8C66961C2322BB00D92868 /* TodayRosterViewController.swift */,
@@ -274,6 +280,7 @@
 				0FFE6C421C1C72BF00BBEF9B /* RosterTypeViewController.swift in Sources */,
 				0FFE6C381C1C712100BBEF9B /* SignOutHistoryViewController.swift in Sources */,
 				0F8C66951C2322A100D92868 /* AllRostersViewController.swift in Sources */,
+				0FB3D1DE1C52F787008F4FCD /* SelectStudentToAddToRosterViewController.swift in Sources */,
 				0F8F7CAC1C4D311A001D4A4E /* AddOrEditStudentViewController.swift in Sources */,
 				0FFE6C521C208E9600BBEF9B /* ScheduleAbsenceViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
@@ -293,6 +300,7 @@
 				0F8F7CB41C4EB8CE001D4A4E /* Line.swift in Sources */,
 				0FFE6C2E1C1C6FFD00BBEF9B /* LogInViewController.swift in Sources */,
 				0F8C66931C23227F00D92868 /* AllStudentsViewController.swift in Sources */,
+				0FB3D1DA1C52DFBC008F4FCD /* AddOrEditAttendanceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

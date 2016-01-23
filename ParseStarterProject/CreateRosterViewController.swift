@@ -140,7 +140,28 @@ class CreateRosterViewController: UIViewController {
     }
 
     @IBAction func deleteRoster(sender: AnyObject) {
-        //delete all relevant stuff
+        let myAlertController = UIAlertController(title: "Delete Roster", message: "Are you sure you want to delete this roster?", preferredStyle: .Alert)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            //Do some stuff
+        }
+        myAlertController.addAction(cancelAction)
+
+        let nextAction = UIAlertAction(title: "Delete", style: .Default) { action -> Void in
+            self.existingRoster[0].deleteInBackgroundWithBlock {
+                (success: Bool, error:NSError?) -> Void in
+                if(success) {
+                    print("Deleted")
+                    self.performSegueWithIdentifier("ReturnToAllRostersUnwind", sender: self)
+                }
+                else {
+                    print("Error")
+                }
+            }
+        }
+        myAlertController.addAction(nextAction)
+        presentViewController(myAlertController, animated: true, completion: nil)
+
     }
 
     @IBAction func createRoster(sender: AnyObject) {

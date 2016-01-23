@@ -79,12 +79,12 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     private func segue() {
-        if (rosterState == 2) {
-            performSegueWithIdentifier("StudentRosterToScheduleAbsence", sender: self)
-        } else if (rosterState == 0) {
+        if (rosterState == 0) {
             performSegueWithIdentifier("StudentRosterToStudentProfile", sender: self)
         } else if (rosterState == 1) {
             performSegueWithIdentifier("StudentRosterToSignOut", sender: self)
+        } else if (rosterState == 2) {
+            performSegueWithIdentifier("StudentRosterToScheduleAbsence", sender: self)
         }
     }
     

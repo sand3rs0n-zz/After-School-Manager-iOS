@@ -1,20 +1,21 @@
 //
-//  AllStudentsViewController.swift
+//  SelectChildToAddToRosterViewController.swift
 //  ParseStarterProject-Swift
 //
-//  Created by Steven on 12/17/15.
-//  Copyright © 2015 Parse. All rights reserved.
+//  Created by Steven on 1/22/16.
+//  Copyright © 2016 Parse. All rights reserved.
 //
 
 import UIKit
 import Parse
 
-class AllStudentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SelectStudentToAddToRosterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var studentListTable: UITableView!
 
-    private var studentList = [PFObject]()
     private var forwardedStudentID = ""
+    private var students = [PFObject]()
+    private var rosterID = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,57 +24,61 @@ class AllStudentsViewController: UIViewController, UITableViewDataSource, UITabl
         // Do any additional setup after loading the view.
     }
 
+    private func getStudents() {
+        let query = PFQuery(className: "StudentProfile")
+        query.whereKey("username", equalTo: (currentUser?.username)!)
+        let subquery = PFQuery(className: "StudentRosters")
+        subquery.whereKey("rosterID", equalTo: rosterID)
+        query.whereKey("objectId", doesNotMatchKey: "studentID", inQuery: subquery)
+        query.orderByAscending("lastName")
+        do {
+            students = try query.findObjects()
+        } catch {
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    private func getStudents() {
-        let query = PFQuery(className: "StudentProfile")
-        query.whereKey("username", equalTo: (currentUser?.username)!)
-        query.orderByAscending("lastName")
-        do {
-            studentList = try query.findObjects()
-        } catch {
-        }
+    func setRosterID(rosterID: String) {
+        self.rosterID = rosterID
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let student: PFObject = studentList[indexPath.row]
+        let student: PFObject = students[indexPath.row]
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = (student["firstName"] as? String)! + " " + (student["lastName"] as? String)!
         return cell
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studentList.count
+        return students.count
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let student: PFObject = studentList[(indexPath.row)]
+        let student: PFObject = students[(indexPath.row)]
         forwardedStudentID = student.objectId!
-        performSegueWithIdentifier("InstructorMenuStudentsToEditStudent", sender: self)
-    }
-
-    @IBAction func instructorMenuStudentsUnwind(segue: UIStoryboardSegue) {
-        getStudents()
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.studentListTable.reloadData()
-        })
+        performSegueWithIdentifier("SelectStudentToAddToRoster", sender: self)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let aesvc = segue.destinationViewController as? AddOrEditStudentViewController
-
-        if (segue.identifier == "InstructorMenuStudentsToAddStudent") {
-            aesvc?.setTitleValue("Add New Student")
-            aesvc?.setAddUpdateButtonText("Add Student")
-        } else if (segue.identifier == "InstructorMenuStudentsToEditStudent") {
-            aesvc?.setTitleValue("Edit Student")
-            aesvc?.setAddUpdateButtonText("Update Student")
-            aesvc?.setUpdate(true)
-            aesvc?.setStudentID(forwardedStudentID)
+        if (segue.identifier == "SelectStudentToAddToRoster") {
+        let aeavc = segue.destinationViewController as? AddOrEditAttendanceViewController
+        aeavc?.setState(1)
+        aeavc?.setTitleValue("Add Student to Roster")
+        aeavc?.setStudentId(forwardedStudentID)
+        aeavc?.setRosterId(rosterID)
+        aeavc?.setButtonText("Add Attendance")
         }
+    }
+
+    @IBAction func returnToSelectStudentToAddToRosterUnwind(segue: UIStoryboardSegue) {
+        getStudents()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        self.studentListTable.reloadData()
+        })
     }
 
     /*

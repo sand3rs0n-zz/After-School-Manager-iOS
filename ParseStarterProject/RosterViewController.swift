@@ -12,28 +12,34 @@ import Parse
 class RosterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var titleBar: UINavigationItem!
+    @IBOutlet weak var studentListTable: UITableView!
     
     private var navTitle = ""
     private var rosterID = ""
     private var students = [PFObject]()
     private var roster = [PFObject]()
+    private var forwardedStudentID = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.titleBar.title = navTitle
 
-        let query = PFQuery(className: "StudentRosters")
-        query.whereKey("rosterID", equalTo: rosterID)
-        do {
-            students = try query.findObjects()
-        } catch {
-        }
+        getStudents()
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    private func getStudents() {
+        let query = PFQuery(className: "StudentRosters")
+        query.whereKey("rosterID", equalTo: rosterID)
+        do {
+            students = try query.findObjects()
+        } catch {
+        }
     }
 
     func setTitleValue(navTitle: String) {
@@ -61,13 +67,15 @@ class RosterViewController: UIViewController, UITableViewDataSource, UITableView
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let student: PFObject = students[(indexPath.row)]
+        forwardedStudentID = student["studentID"] as! String
+        performSegueWithIdentifier("SpecificRosterToEditStudent", sender: self)
     }
 
     @IBAction func returnToRosterUnwind(segue: UIStoryboardSegue) {
-        //getStudents()
-        /*dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.rosterListTable.reloadData()
-        })*/
+        getStudents()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.studentListTable.reloadData()
+        })
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -77,6 +85,16 @@ class RosterViewController: UIViewController, UITableViewDataSource, UITableView
             crvc?.setTitleValue("Edit Roster")
             crvc?.setExistingRoster(roster)
             crvc?.setCreateRosterButtonValue("Edit Roster")
+        } else if (segue.identifier == "SpecificRosterToEditStudent") {
+            let aeavc = segue.destinationViewController as? AddOrEditAttendanceViewController
+            aeavc?.setState(0)
+            aeavc?.setTitleValue("Edit Student Attendance")
+            aeavc?.setStudentId(forwardedStudentID)
+            aeavc?.setRosterId(rosterID)
+            aeavc?.setButtonText("Update Attendance")
+        } else if (segue.identifier == "SelectNewStudentToAddToRoster") {
+            let ssarvc = segue.destinationViewController as? SelectStudentToAddToRosterViewController
+            ssarvc?.setRosterID(rosterID)
         }
     }
 

@@ -626,10 +626,10 @@
             </objects>
             <point key="canvasLocation" x="3745" y="444"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Or Edit Attendance View Controller-->
         <scene sceneID="sXf-p8-GhL">
             <objects>
-                <viewController id="X41-nd-CDK" sceneMemberID="viewController">
+                <viewController id="X41-nd-CDK" customClass="AddOrEditAttendanceViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cgB-Pj-wEO"/>
                         <viewControllerLayoutGuide type="bottom" id="BqO-gz-6cd"/>
@@ -638,26 +638,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tcb-CG-ljx">
-                                <rect key="frame" x="229" y="77" width="43" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tcb-CG-ljx">
+                                <rect key="frame" x="154" y="92" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="approved pick ups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7j-ZI-xfl">
-                                <rect key="frame" x="83" y="148" width="141" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="list of  week days as buttons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68G-UB-IW0">
-                                <rect key="frame" x="18" y="233" width="216" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delete from Roster Button" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5n-l0-cKI">
-                                <rect key="frame" x="111" y="311" width="199" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Approved Guardians" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7j-ZI-xfl">
+                                <rect key="frame" x="50" y="140" width="156" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -666,15 +654,111 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Edit/Add Student Attendance" id="GYa-FH-z2d">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="MKp-CS-QlO"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="MKp-CS-QlO">
+                                            <connections>
+                                                <action selector="backButton:" destination="X41-nd-CDK" id="0RH-lw-pNZ"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LY-aF-gkW">
+                                <rect key="frame" x="44" y="231" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Monday"/>
+                                <connections>
+                                    <action selector="mondaySelect:" destination="X41-nd-CDK" eventType="touchUpInside" id="ovg-2k-H6V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTT-n7-hpB">
+                                <rect key="frame" x="148" y="231" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Tuesday"/>
+                                <connections>
+                                    <action selector="tuesdaySelect:" destination="X41-nd-CDK" eventType="touchUpInside" id="Qbz-G2-1hs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Cd-Lh-hoi">
+                                <rect key="frame" x="254" y="231" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Wednesday"/>
+                                <connections>
+                                    <action selector="wednesdaySelect:" destination="X41-nd-CDK" eventType="touchUpInside" id="K9g-o4-Cae"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHa-MX-JkX">
+                                <rect key="frame" x="459" y="231" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Friday"/>
+                                <connections>
+                                    <action selector="fridaySelect:" destination="X41-nd-CDK" eventType="touchUpInside" id="hQN-wT-qv3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDL-3S-SKC">
+                                <rect key="frame" x="194" y="277" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Saturday"/>
+                                <connections>
+                                    <action selector="saturdaySelect:" destination="X41-nd-CDK" eventType="touchUpInside" id="L4R-p0-Gt4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Rb-hO-DY7">
+                                <rect key="frame" x="309" y="277" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Sunday"/>
+                                <connections>
+                                    <action selector="sundaySelect:" destination="X41-nd-CDK" eventType="touchUpInside" id="GrR-JB-kHB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QyX-Jp-UGj">
+                                <rect key="frame" x="354" y="231" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Thursday"/>
+                                <connections>
+                                    <action selector="thursdaySelect:" destination="X41-nd-CDK" eventType="touchUpInside" id="58T-gM-7hr"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkV-GE-hWz">
+                                <rect key="frame" x="213" y="92" width="73" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nu9-Vr-XNU">
+                                <rect key="frame" x="236" y="394" width="129" height="30"/>
+                                <state key="normal" title="Delete from Roster"/>
+                                <connections>
+                                    <action selector="deleteFromRoster:" destination="X41-nd-CDK" eventType="touchUpInside" id="Kgo-b2-qPg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KfL-lg-hR0">
+                                <rect key="frame" x="234" y="342" width="133" height="30"/>
+                                <state key="normal" title="Update Attendance"/>
+                                <connections>
+                                    <action selector="updateAttendance:" destination="X41-nd-CDK" eventType="touchUpInside" id="cI9-U6-agp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="deleteFromRosterButton" destination="Nu9-Vr-XNU" id="njB-BX-Pfc"/>
+                        <outlet property="friday" destination="zHa-MX-JkX" id="Lrd-rZ-BGy"/>
+                        <outlet property="monday" destination="7LY-aF-gkW" id="ssj-8v-VU4"/>
+                        <outlet property="saturday" destination="IDL-3S-SKC" id="T1v-ZB-0rt"/>
+                        <outlet property="studentName" destination="lkV-GE-hWz" id="fzv-Gj-BM3"/>
+                        <outlet property="sunday" destination="5Rb-hO-DY7" id="ywZ-CW-KTE"/>
+                        <outlet property="thursday" destination="QyX-Jp-UGj" id="vas-Lc-5sb"/>
+                        <outlet property="titleBar" destination="GYa-FH-z2d" id="IlL-ME-ztq"/>
+                        <outlet property="tuesday" destination="mTT-n7-hpB" id="wKh-Y3-16V"/>
+                        <outlet property="updateAttendanceButton" destination="KfL-lg-hR0" id="N5m-1f-lde"/>
+                        <outlet property="wednesday" destination="7Cd-Lh-hoi" id="AcA-Rs-pdj"/>
+                        <segue destination="OHi-gx-Mdw" kind="unwind" identifier="EditStudentFromAllRostersUnwind" unwindAction="returnToRosterUnwind:" id="9Aj-zZ-X8a"/>
+                        <segue destination="OHi-gx-Mdw" kind="unwind" identifier="ReturnToSelectStudentToAddToRosterUnwind" unwindAction="returnToSelectStudentToAddToRosterUnwind:" id="SBf-bW-bbG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="StS-I0-Ki7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="OHi-gx-Mdw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3740" y="-270"/>
         </scene>
@@ -1223,8 +1307,8 @@
                                 <state key="normal" title="Weekly Camps"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1l-JS-NKf">
-                                <rect key="frame" x="90" y="374" width="94" height="30"/>
-                                <state key="normal" title="Add to Roster"/>
+                                <rect key="frame" x="111" y="374" width="52" height="30"/>
+                                <state key="normal" title="Rosters"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-4B-LaB">
                                 <rect key="frame" x="316" y="362" width="103" height="30"/>
@@ -1346,7 +1430,11 @@
                                                 <segue destination="IP7-Z6-eJ8" kind="unwind" unwindAction="returnToAllRostersUnwind:" id="NRo-VR-eil"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Add Student" id="11p-Af-wQr"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Add Student" id="11p-Af-wQr">
+                                            <connections>
+                                                <segue destination="Tai-jP-GCE" kind="show" identifier="SelectNewStudentToAddToRoster" id="ozY-eV-mRa"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -1383,7 +1471,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="studentListTable" destination="gYC-6W-hSm" id="KO8-ni-d81"/>
                         <outlet property="titleBar" destination="Jmg-0D-Y82" id="HnR-pK-8oa"/>
+                        <segue destination="X41-nd-CDK" kind="show" identifier="SpecificRosterToEditStudent" id="VhW-rq-5kh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ybw-pW-q7s" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1471,12 +1561,68 @@
             </objects>
             <point key="canvasLocation" x="3036" y="1102"/>
         </scene>
+        <!--Select Student To Add To Roster View Controller-->
+        <scene sceneID="igN-ju-RvK">
+            <objects>
+                <viewController id="Tai-jP-GCE" customClass="SelectStudentToAddToRosterViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wRf-du-WbU"/>
+                        <viewControllerLayoutGuide type="bottom" id="kze-Ks-HNs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vbR-Lg-LKO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z1k-ug-fZF">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Select Student to Add" id="tGV-B6-h7I">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="eXv-8X-iE4">
+                                            <connections>
+                                                <segue destination="5RH-7L-6Nw" kind="unwind" unwindAction="returnToRosterUnwind:" id="jGn-3j-j3q"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n8a-Co-us4">
+                                <rect key="frame" x="86" y="93" width="428" height="279"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="g0d-Tx-s6C">
+                                        <rect key="frame" x="0.0" y="28" width="428" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g0d-Tx-s6C" id="bEz-P3-fLz">
+                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Tai-jP-GCE" id="God-x8-94M"/>
+                                    <outlet property="delegate" destination="Tai-jP-GCE" id="9Hu-dy-WCT"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="studentListTable" destination="n8a-Co-us4" id="lAf-J6-o3b"/>
+                        <segue destination="X41-nd-CDK" kind="show" identifier="SelectStudentToAddToRoster" id="8PL-gg-FFW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iOO-YQ-g6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5RH-7L-6Nw" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3027" y="-940"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="DGb-jK-4wo"/>
         <segue reference="Y7f-jV-sTv"/>
         <segue reference="B3N-ZR-hh2"/>
-        <segue reference="M1x-u4-0kv"/>
+        <segue reference="jso-AR-xa8"/>
+        <segue reference="8PL-gg-FFW"/>
         <segue reference="N81-ja-h19"/>
     </inferredMetricsTieBreakers>
 </document>
