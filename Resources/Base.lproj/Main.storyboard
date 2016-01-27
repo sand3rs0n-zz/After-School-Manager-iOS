@@ -340,6 +340,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="upcomingAbsencesListTable" destination="cTT-KW-5ew" id="R9p-8A-VJu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vuf-TO-hZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Gds-Q1-auA" userLabel="Exit" sceneMemberID="exit"/>
@@ -864,6 +867,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="studentListTable" destination="iVq-1U-5kc" id="QUt-gn-Iac"/>
                         <outlet property="titleBar" destination="qL4-sS-Mp2" id="UnA-oM-oJP"/>
                         <segue destination="gog-WY-KHs" kind="show" identifier="StudentRosterToSignOut" id="QPS-ld-TUv"/>
                         <segue destination="EIX-ha-1zn" kind="show" identifier="StudentRosterToScheduleAbsence" id="duC-Xv-JdU"/>
@@ -893,7 +897,7 @@
                                     <navigationItem title="Sign Out *Student's Name*" id="2dK-q4-HQI">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="Hfg-MB-0AL">
                                             <connections>
-                                                <segue destination="JSP-vD-7dw" kind="unwind" unwindAction="studentSelectUnwind:" id="ilu-2L-PgI"/>
+                                                <segue destination="JSP-vD-7dw" kind="unwind" identifier="SignOutToStudentSelectUnwind" unwindAction="studentSelectUnwind:" id="ilu-2L-PgI"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1621,8 +1625,8 @@
         <segue reference="DGb-jK-4wo"/>
         <segue reference="Y7f-jV-sTv"/>
         <segue reference="B3N-ZR-hh2"/>
-        <segue reference="jso-AR-xa8"/>
-        <segue reference="8PL-gg-FFW"/>
+        <segue reference="VhW-rq-5kh"/>
+        <segue reference="M1x-u4-0kv"/>
         <segue reference="N81-ja-h19"/>
     </inferredMetricsTieBreakers>
 </document>

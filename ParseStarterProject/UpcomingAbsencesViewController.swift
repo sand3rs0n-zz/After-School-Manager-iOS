@@ -12,23 +12,14 @@ import Parse
 class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     private var absenceList = [PFObject]()
-    let date = NSDate()
-    let calendar = NSCalendar.currentCalendar()
+    private let date = Date()
+    private let calendar = NSCalendar.currentCalendar()
     
+    @IBOutlet weak var upcomingAbsencesListTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let year = calendar.components(.Year, fromDate:date).year
-        let query = PFQuery(className: "AbsencesList")
-        query.whereKey("username", equalTo: (currentUser?.username)!)
-        query.whereKey("year", greaterThanOrEqualTo: year)
-        query.orderByAscending("month")
-        query.addAscendingOrder("day")
-        do {
-            absenceList = try query.findObjects()
-        } catch {
-        }
-        removeOldDates()
 
+        getUpcomingAbsences()
         // Do any additional setup after loading the view.
     }
 
@@ -36,11 +27,25 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    private func getUpcomingAbsences() {
+        let query = PFQuery(className: "AbsencesList")
+        query.whereKey("username", equalTo: (currentUser?.username)!)
+        query.whereKey("year", greaterThanOrEqualTo: date.getCurrentYear())
+        query.orderByAscending("month")
+        query.addAscendingOrder("day")
+        query.addAscendingOrder("studentLastName")
+        do {
+            absenceList = try query.findObjects()
+        } catch {
+        }
+        removeOldDates()
+    }
     
     private func removeOldDates() {
-        let year = calendar.components(.Year, fromDate:date).year
-        let month = calendar.components(.Month, fromDate:date).month
-        let day = calendar.components(.Day, fromDate:date).day
+        let year = date.getCurrentYear()
+        let month = date.getCurrentMonth()
+        let day = date.getCurrentDay()
         for (var i = 0; i < absenceList.count; i++) {
             let currentAbsence = absenceList[i]
             if ((currentAbsence["year"] as! Int) < year) {
@@ -85,6 +90,10 @@ class UpcomingAbsencesViewController: UIViewController, UITableViewDataSource, U
     }
     
     @IBAction func scheduleAbsenceUnwind(segue: UIStoryboardSegue) {
+        getUpcomingAbsences()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.upcomingAbsencesListTable.reloadData()
+        })
     }
     
     /*

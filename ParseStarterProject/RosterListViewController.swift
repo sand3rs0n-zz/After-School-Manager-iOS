@@ -19,6 +19,7 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
     
     private var forwardedRosterID = ""
     private var forwardedRosterName = ""
+    private let date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,15 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         let query = PFQuery(className: "Rosters")
         query.whereKey("username", equalTo: (currentUser?.username)!)
         query.whereKey("rosterType", equalTo: rosterType)
+        query.whereKey("endYear", greaterThanOrEqualTo: date.getCurrentYear())
+        query.orderByAscending("startMonth")
+        query.addAscendingOrder("startDay")
+        if (rosterState == 1) {
+            //get it so only relevant camps show up
+        }
         do {
             rosterList = try query.findObjects()
+            removeOldDates()
         } catch {
         }
         
@@ -38,7 +46,26 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    private func removeOldDates() {
+        let year = date.getCurrentYear()
+        let month = date.getCurrentMonth()
+        let day = date.getCurrentDay()
+        for (var i = 0; i < rosterList.count; i++) {
+            let roster = rosterList[i]
+            if ((roster["endYear"] as! Int) < year) {
+                rosterList.removeAtIndex(i)
+                i--
+            } else if ((roster["endYear"] as! Int) == year && (roster["endMonth"] as! Int) < month) {
+                rosterList.removeAtIndex(i)
+                i--
+            } else if ((roster["endYear"] as! Int) == year && (roster["endMonth"] as! Int) == month && (roster["endDay"] as! Int) < day) {
+                rosterList.removeAtIndex(i)
+                i--
+            }
+        }
+    }
+
     func setState(state: Int) {
         rosterState = state
     }

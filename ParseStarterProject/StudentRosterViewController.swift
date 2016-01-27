@@ -16,8 +16,9 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
     private var rosterID = ""
     private var rosterType = 0
     @IBOutlet weak var titleBar: UINavigationItem!
+    @IBOutlet weak var studentListTable: UITableView!
+
     private var navTitle = ""
-    
     private var forwardedStudentID = ""
     private var forwardedStudentLastName = ""
     private var forwardedStudentFirstName = ""
@@ -25,21 +26,35 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.titleBar.title = navTitle
-        let query = PFQuery(className: "StudentRosters")
-        query.whereKey("username", equalTo: (currentUser?.username)!)
-        query.whereKey("rosterID", equalTo: rosterID)
-        query.orderByAscending("studentLastName")
-        do {
-            students = try query.findObjects()
-        } catch {
-        }
-
+        getStudents()
         // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    private func getStudents() {
+        let query = PFQuery(className: "StudentRosters")
+        query.whereKey("username", equalTo: (currentUser?.username)!)
+        query.whereKey("rosterID", equalTo: rosterID)
+        query.orderByAscending("studentLastName")
+
+        if (rosterState == 1) {
+            let signedOutSubquery = PFQuery(className: "SignOuts")
+            let date = Date()
+            signedOutSubquery.whereKey("day", equalTo: date.getCurrentDay())
+            signedOutSubquery.whereKey("month", equalTo: date.getCurrentMonth())
+            signedOutSubquery.whereKey("year", equalTo: date.getCurrentYear())
+            signedOutSubquery.whereKey("rosterID", equalTo: rosterID)
+            query.whereKey("studentID", doesNotMatchKey: "studentID", inQuery: signedOutSubquery)
+            query.whereKey(date.getCurrentWeekday(), equalTo: true)
+        }
+        do {
+            students = try query.findObjects()
+        } catch {
+        }
     }
     
     func setState(state: Int) {
@@ -102,10 +117,15 @@ class StudentRosterViewController: UIViewController, UITableViewDataSource, UITa
             sovc?.setStudentID(forwardedStudentID)
             sovc?.setTitleValue(forwardedStudentFirstName + " " + forwardedStudentLastName)
             sovc?.setRosterType(rosterType)
+            sovc?.setRosterID(rosterID)
         }
     }
     
     @IBAction func studentSelectUnwind(segue: UIStoryboardSegue) {
+        getStudents()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.studentListTable.reloadData()
+        })
     }
     
 

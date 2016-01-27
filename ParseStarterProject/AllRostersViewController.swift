@@ -32,6 +32,9 @@ class AllRostersViewController: UIViewController, UITableViewDataSource, UITable
     private func getRosters() {
         let query = PFQuery(className: "Rosters")
         query.whereKey("username", equalTo: (currentUser?.username)!)
+        query.orderByAscending("startYear")
+        query.addAscendingOrder("startMonth")
+        query.addAscendingOrder("startDay")
         do {
             rosterList = try query.findObjects()
         } catch {

@@ -21,6 +21,8 @@ class Date {
     private var currentHour = 0
     private var currentMinute = 0
 
+    private var currentWeekDay = "monday"
+
     init () {
         day = 1
         month = 1
@@ -120,6 +122,34 @@ class Date {
         currentDay = calendar.components(.Day, fromDate: date).day
         currentHour = calendar.components(.Hour, fromDate: date).hour
         currentMinute = calendar.components(.Minute, fromDate: date).minute
+        let weekday = calendar.components(.Weekday, fromDate: date).weekday
+
+        switch weekday {
+        case 1:
+            currentWeekDay = "sunday"
+            break
+        case 2:
+            currentWeekDay = "monday"
+            break
+        case 3:
+            currentWeekDay = "tuesday"
+            break
+        case 4:
+            currentWeekDay = "wednesday"
+            break
+        case 5:
+            currentWeekDay = "thursday"
+            break
+        case 6:
+            currentWeekDay = "friday"
+            break
+        case 7:
+            currentWeekDay = "saturday"
+            break
+        default:
+            print("Error fetching days")
+            currentWeekDay = "day"
+        }
     }
 
     func getCurrentDay() -> Int {
@@ -140,6 +170,10 @@ class Date {
 
     func getCurrentMinute() -> Int {
         return currentMinute
+    }
+
+    func getCurrentWeekday() -> String {
+        return currentWeekDay
     }
 
 }

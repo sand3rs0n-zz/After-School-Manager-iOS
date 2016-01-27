@@ -36,6 +36,7 @@ class RosterViewController: UIViewController, UITableViewDataSource, UITableView
     private func getStudents() {
         let query = PFQuery(className: "StudentRosters")
         query.whereKey("rosterID", equalTo: rosterID)
+        query.orderByAscending("studentLastName")
         do {
             students = try query.findObjects()
         } catch {

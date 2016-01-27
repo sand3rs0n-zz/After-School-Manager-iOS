@@ -14,6 +14,7 @@ class SignOutViewController: UIViewController {
     private var studentID = ""
     private var rosterType = 0
     private var signOutGuardian = ""
+    private var rosterID = ""
 
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var signatureBox: SignatureView!
@@ -43,6 +44,10 @@ class SignOutViewController: UIViewController {
         rosterType = type
     }
 
+    func setRosterID(id: String) {
+        rosterID = id
+    }
+
     @IBAction func clearSignature(sender: AnyObject) {
         signatureBox.setLines([])
         signatureBox.setNeedsDisplay()
@@ -54,6 +59,7 @@ class SignOutViewController: UIViewController {
             signOutRecord["studentID"] = studentID
             signOutRecord["signOutGuardian"] = signOutGuardian
             signOutRecord["rosterType"] = rosterType
+            signOutRecord["rosterID"] = rosterID
             let timestamp = Date()
             signOutRecord["day"] = timestamp.getCurrentDay()
             signOutRecord["month"] = timestamp.getCurrentMonth()
@@ -66,6 +72,7 @@ class SignOutViewController: UIViewController {
                 (success: Bool, error:NSError?) -> Void in
                 if(success) {
                     print("Saved")
+                    self.performSegueWithIdentifier("SignOutToStudentSelectUnwind", sender: self)
                 }
                 else {
                     print("Error")
