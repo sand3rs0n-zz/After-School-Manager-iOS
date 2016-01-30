@@ -38,7 +38,6 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
             removeOldDates()
         } catch {
         }
-        
         // Do any additional setup after loading the view.
     }
     
@@ -46,6 +45,15 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    /*override func viewDidAppear(animated: Bool) {
+        if (rosterList.count == 1) {
+            let roster: PFObject = rosterList[0]
+            forwardedRosterName = roster["name"] as! String
+            forwardedRosterID = roster.objectId!
+            performSegueWithIdentifier("RosterSelectToStudentRoster", sender: self)
+        }
+    }*/
 
     private func removeOldDates() {
         let year = date.getCurrentYear()
@@ -62,6 +70,18 @@ class RosterListViewController: UIViewController, UITableViewDataSource, UITable
             } else if ((roster["endYear"] as! Int) == year && (roster["endMonth"] as! Int) == month && (roster["endDay"] as! Int) < day) {
                 rosterList.removeAtIndex(i)
                 i--
+            }
+            if (rosterState == 1) {
+                if ((roster["startYear"] as! Int) > year) {
+                    rosterList.removeAtIndex(i)
+                    i--
+                } else if ((roster["startYear"] as! Int) == year && (roster["startMonth"] as! Int) > month) {
+                    rosterList.removeAtIndex(i)
+                    i--
+                } else if ((roster["startYear"] as! Int) == year && (roster["startMonth"] as! Int) ==  month && (roster["startDay"] as! Int) > day) {
+                    rosterList.removeAtIndex(i)
+                    i--
+                }
             }
         }
     }
